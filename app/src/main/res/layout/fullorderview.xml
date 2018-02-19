@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#ffffff"
+    tools:context="in.ahadi.luci.ahadi.cartactivaty">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ordernofield"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/orderno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textColor="#000000"
+                android:text="@string/orderno"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/orderstatusfield"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/ordernofield"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/orderstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#000000"
+                android:text="@string/orderstatuslabel"
+                tools:ignore="SmallSp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#000000"
+                android:text="Waiting for vendor"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/orderitemlabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderstatusfield"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#000000"
+                android:text="@string/orderitemslabel"
+                tools:ignore="SmallSp" />
+           </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/androidcartitems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderitemlabel"
+            tools:ignore="DisableBaselineAlignment">
+            <ListView
+                android:id="@+id/list"
+                android:scrollbars="none"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:divider="@color/list_divider"
+                android:background="#99000000"
+                android:dividerHeight="1dp"
+                android:listSelector="@drawable/list_row_selector"
+                tools:ignore="InefficientWeight,NestedScrolling" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ratingwigetfield"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@+id/androidcartitems"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/white"
+                android:text="@string/rate"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

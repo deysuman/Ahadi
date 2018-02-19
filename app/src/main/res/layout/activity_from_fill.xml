@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_from_fill"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bookbindingcloth"
+    tools:context="in.ahadi.luci.ahadi.from_fill">
+    <LinearLayout
+        android:id="@+id/trui"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="#99000000"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/ahadilogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/ahadi" />
+
+        <TextView
+            android:id="@+id/texthintarea"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="@string/fillfromhint"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/namearea"
+            android:padding="5dp"
+            android:layout_below="@+id/texthintarea"
+            android:layout_height="wrap_content"
+            android:theme="@style/TextLabel"
+            tools:ignore="ObsoleteLayoutParam">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:id="@+id/name"
+                android:capitalize="sentences"
+                android:layout_height="wrap_content"
+                android:drawableTint="#fff"
+                android:theme="@style/MyEditTextTheme"
+                android:singleLine="true"
+                android:textColorHint="#fff"
+                android:hint="@string/namehint"
+                android:textColor="#fff"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/addressarea"
+            android:padding="5dp"
+            android:layout_below="@+id/namearea"
+            android:theme="@style/TextLabel"
+            android:layout_height="wrap_content"
+            tools:ignore="ObsoleteLayoutParam">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:id="@+id/addreess"
+                android:layout_height="wrap_content"
+                android:drawableTint="#fff"
+                android:textColorHint="#fff"
+                android:theme="@style/MyEditTextTheme"
+                android:textColor="#fff"
+                android:singleLine="true"
+                android:hint="@string/addresshint"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/adharcardarea"
+            android:padding="5dp"
+            android:layout_below="@+id/addressarea"
+            android:theme="@style/TextLabel"
+            android:layout_height="wrap_content"
+            tools:ignore="ObsoleteLayoutParam">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:id="@+id/adharcard"
+                android:layout_height="wrap_content"
+                android:drawableTint="#fff"
+                android:theme="@style/MyEditTextTheme"
+                android:maxLength="12"
+                android:singleLine="true"
+                android:hint="@string/adharhint"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_submit_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorPrimaryDark"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/lbl_submit"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_profilesettings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="in.ahadi.luci.ahadi.profilesettings">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="fill_parent"
+        android:layout_height="58dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolBarStyle"
+        android:titleTextColor="#ffffff"
+        tools:ignore="UnusedAttribute">
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar1"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/name_field"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:id="@+id/name"
+                android:layout_height="wrap_content"
+                android:drawableTint="#FF4081"
+                android:textSize="14sp"
+                android:hint="@string/namehint"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/mobile_field"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:id="@+id/mobile"
+                android:textSize="14sp"
+                android:layout_height="wrap_content"
+                android:drawableTint="#FF4081"
+                android:hint="@string/mobilehint"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/addressarea"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:id="@+id/addreess"
+                android:layout_height="wrap_content"
+                android:drawableTint="#FF4081"
+                android:textSize="14sp"
+                android:hint="@string/addresshint"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ff4081"
+            android:textColor="#fff"
+            android:textSize="13sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10dp"
+            android:text="Submit"/>
+
+
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/delprofile"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f30"
+            android:textColor="#fff"
+            android:text="Delete profile"/>
+
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

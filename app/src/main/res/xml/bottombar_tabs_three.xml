@@ -1,0 +1,18 @@
+<tabs>
+    <tab
+        id="@+id/tab_favorites"
+        icon="@drawable/googleplus"
+        title="Favorites"
+        barColorWhenSelected="#5D4037" />
+    <tab
+        id="@+id/tab_favorites2"
+        icon="@drawable/facebook"
+        title="Favorites"
+        barColorWhenSelected="#5D4037" />
+    <tab
+        id="@+id/tab_favorites3"
+        icon="@drawable/linkedin"
+        title="Favorites"
+        barColorWhenSelected="#5D4037" />
+    <!-- You can use @color resources too! -->
+</tabs>

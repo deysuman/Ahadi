@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/bno_refresh"
+        android:visible="true"
+        android:title="@string/email_label"
+        android:icon="@drawable/ic_autorenew_white"
+        app:showAsAction="always">
+    </item>
+</menu>
