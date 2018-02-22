@@ -12,4 +12,5 @@ public class AppConfig {
     public static String URL_GETADDROMLATLONG = "http://ahadi.in/app/php/getlocation.php";
     public static String URL_GETORDERDETAILS = "http://ahadi.in/app/php/orderfetch.php";
     public static String URL_GETALLORDERDETAILS = "http://ahadi.in/app/php/allorderfetch.php";
+    public static String URL_GETALLNUMBERS = "http://ahadi.in/app/php/getallnumber.php";
 }

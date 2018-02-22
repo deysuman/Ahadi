@@ -1,6 +1,11 @@
 package in.ahadi.luci.ahadi;
 
+import android.*;
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -24,13 +29,22 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.bumptech.glide.Glide;
@@ -39,23 +53,40 @@ import com.roughike.bottombar.BottomBarTab;
 import com.roughike.bottombar.OnMenuTabClickListener;
 import com.roughike.bottombar.OnTabClickListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static in.ahadi.luci.ahadi.AppConfig.URL_GETALLNUMBERS;
+import static in.ahadi.luci.ahadi.AppConfig.URL_GETALLORDERDETAILS;
 
 public class display_menu extends AppCompatActivity {
 
     ImageView callnow;
 
-    private BottomBar mBottomBar;
+    ListView myNames;
 
+    Activity x;
+
+    private BottomBar mBottomBar;
+    private List<FranchaiseModel> franchaises = new ArrayList<>();
     private static final int PERMISSION_CALLBACK_CONSTANT = 100;
     private static final int REQUEST_PERMISSION_SETTING = 101;
-    String[] permissionsRequired =  new String[]{android.Manifest.permission.CAMERA,
+    String[] permissionsRequired =  new String[]{Manifest.permission.CALL_PHONE,
             android.Manifest.permission.ACCESS_FINE_LOCATION,
             android.Manifest.permission.ACCESS_COARSE_LOCATION};
     private SharedPreferences permissionStatus;
     private boolean sentToSettings = false;
+    private ProgressBar bar;
 
+    private Franchise adapter;
+
+    ProgressDialog dialogs;
 
 
     @Override
@@ -63,7 +94,7 @@ public class display_menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_menu);
 
-
+        x = this;
         permissionStatus = getSharedPreferences("permissionStatus",MODE_PRIVATE);
 
 
@@ -141,6 +172,30 @@ public class display_menu extends AppCompatActivity {
 
         callnow = (ImageView) findViewById(R.id.callnow);
 
+
+
+        callnow.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(display_menu.this);
+                dialog.setContentView(R.layout.custom_dialog);
+                dialog.setTitle("Title...");
+                dialog.show();
+                myNames= (ListView) dialog.findViewById(R.id.List);
+                adapter = new Franchise(x, franchaises);
+                myNames.setAdapter(adapter);
+
+                getContacts();
+
+            }
+        });
+
+
+
+
+
+/*
         callnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,7 +214,7 @@ public class display_menu extends AppCompatActivity {
                 }
                 startActivity(intent);
             }
-        });;
+        });;*/
 
 
 
@@ -223,6 +278,109 @@ public class display_menu extends AppCompatActivity {
 
 
     }
+
+
+    private void getContacts(){
+
+         dialogs = ProgressDialog.show(display_menu.this, "",
+                "Connecting. Please wait...", true);
+        dialogs.setCancelable(false);
+        dialogs.show();
+
+
+        // Tag used to cancel the request
+        String tag_string_req = "req_getnumbers";
+
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                URL_GETALLNUMBERS, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                dialogs.hide();
+
+                //Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                try {
+
+                    JSONObject jObj = new JSONObject(response);
+                    boolean status = jObj.getBoolean("status");
+                    if(status) {
+
+                        JSONArray items = jObj.getJSONArray("franchises");
+
+
+                        if(items.length() > 0) {
+
+                            franchaises.clear();
+
+                            for (int x = 0; x < items.length(); x++) {
+
+                                JSONObject data = items.getJSONObject(x);
+                                FranchaiseModel fmodel = new FranchaiseModel();
+                                fmodel.setAddress(data.getString("address"));
+                                fmodel.setMobile(data.getString("mobile"));
+                                fmodel.setName(data.getString("name"));
+
+                                franchaises.add(fmodel);
+
+                            }
+
+                            Log.e("Total_franchise", String.valueOf(franchaises.size()));
+
+                            adapter.notifyDataSetChanged();
+                        }
+
+                        else{
+
+                            Toast.makeText(getApplicationContext(), "No franchise found", Toast.LENGTH_LONG).show();
+
+                        }
+
+
+
+                    }
+
+
+
+
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+                    //Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                dialogs.hide();
+
+                //Log.e(TAG, "Login Error: " + error.getMessage());
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                //hideDialog();
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("status", "1");
+                return params;
+            }
+
+        };
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+
+    }
+
 
 
     @Override

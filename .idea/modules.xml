@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Ahadi2.iml" filepath="$PROJECT_DIR$/Ahadi2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ahadi.iml" filepath="$PROJECT_DIR$/Ahadi.iml" />
+      <module fileurl="file://C:\Users\Luci\Desktop\Ahadi\Ahadi2.iml" filepath="C:\Users\Luci\Desktop\Ahadi\Ahadi2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

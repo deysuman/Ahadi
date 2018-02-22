@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:name=".AppController"
         android:allowBackup="true"
@@ -21,14 +20,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity
             android:name=".spalash"
             android:launchMode="singleTop"
@@ -36,11 +32,17 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".login"
             android:label="@string/title_activity_login"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".ConnectivityReceiver"
@@ -50,22 +52,26 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".home_user"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".sub_item"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".home_user"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".sub_item"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".display_menu"
-            android:theme="@style/AppTheme.TransNav"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.TransNav">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="in.ahadi.luci.ahadi.login" />
         </activity>
-        <activity android:name=".sms_activity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".from_fill"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".sms_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".from_fill"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".cartactivaty"
             android:label="@string/title_activity_cartactivaty"
@@ -75,7 +81,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="in.ahadi.luci.ahadi.login" />
         </activity>
-        <activity android:name=".singleorder"
+        <activity
+            android:name=".singleorder"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -87,21 +94,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity android:name=".profilesettings" />
-        <activity android:name=".activity_welcome"
-            android:screenOrientation="portrait"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".activity_welcome"
+            android:screenOrientation="portrait">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".contacts"></activity>
     </application>
 
 </manifest>
