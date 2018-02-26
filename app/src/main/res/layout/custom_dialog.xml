@@ -3,6 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Area!"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
+         android:textColor="#000"
+        android:textStyle="bold"
+      android:padding="10dp"
+        android:gravity="center"/>
 
     <ListView
         android:id="@+id/List"

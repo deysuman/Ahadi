@@ -31,7 +31,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -172,16 +175,24 @@ public class display_menu extends AppCompatActivity {
 
         callnow = (ImageView) findViewById(R.id.callnow);
 
-
-
         callnow.setOnClickListener( new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
                 final Dialog dialog = new Dialog(display_menu.this);
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.custom_dialog);
-                dialog.setTitle("Title...");
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams wlp = window.getAttributes();
+
+               // wlp.gravity = Gravity.CENTER;
+                wlp.flags &= ~WindowManager.LayoutParams.FLAG_BLUR_BEHIND;
+                window.setAttributes(wlp);
+                dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
                 dialog.show();
+
                 myNames= (ListView) dialog.findViewById(R.id.List);
                 adapter = new Franchise(x, franchaises);
                 myNames.setAdapter(adapter);
@@ -267,14 +278,6 @@ public class display_menu extends AppCompatActivity {
         mBottomBar.setActiveTabColor("#009688");
 
        // mBottomBar.selectTabAtPosition(0, false);
-
-
-
-
-
-
-
-
 
 
     }
